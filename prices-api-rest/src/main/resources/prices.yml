@@ -1,0 +1,67 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: Prices API
+  description: A sample API for prices fetching
+  
+paths:
+  /prices:
+    get:
+      summary: get price
+      operationId: get price
+      tags:
+        - price
+      responses:
+        200:
+          description: the price that applies
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/price"
+        204:
+          description: no price found
+        default:
+          description: unknown error
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/error"
+          
+components:
+  schemas:
+    price:
+      type: object
+      properties:
+        productId:
+         type: integer
+         format: int64
+         example: 457823
+        brandId:
+          type: integer
+          format: int64
+          example: 1
+        rateId:
+          type: integer
+          format: int64
+          example: 1
+        price:
+          type: number
+          format: double
+          example: 305.67
+        startDate:
+          type: string
+          example: 2020-06-14-00.00.00
+        endDate:
+          type: string
+          example: 2020-06-14-00.00.00
+    error:
+      type: object
+      properties:
+        code:
+          type: integer
+          format: int64
+          example: 1000
+        message:
+          type: string
+          example: unknown error occurred contact support
+ 
