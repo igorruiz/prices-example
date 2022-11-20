@@ -1,0 +1,10 @@
+spring:
+
+  h2:
+    console.enabled: true
+    
+  flyway:
+    url: jdbc:h2:mem:DATABASE
+    schemas: PRICES
+    user: testuser
+    password: password
