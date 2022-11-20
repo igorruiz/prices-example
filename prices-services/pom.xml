@@ -5,7 +5,7 @@
     <artifactId>prices</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>prices-services</artifactId>
+  <artifactId>prices-service</artifactId>
   <name>prices-service</name>
   <dependencies>
 	
