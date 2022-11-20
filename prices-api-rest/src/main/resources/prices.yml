@@ -11,6 +11,28 @@ paths:
       operationId: get price
       tags:
         - price
+      parameters:
+        - in: query
+          name: productId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: id of the product
+        - in: query
+          name: brandId
+          schema:
+            type: integer
+            format: int64
+          required: true
+          description: id of the brand
+        - in: query
+          name: startDate
+          schema:
+            type: string
+            format: date-time
+          required: true
+          description: start date for the price to apply
       responses:
         200:
           description: the price that applies
@@ -50,10 +72,12 @@ components:
           example: 305.67
         startDate:
           type: string
-          example: 2020-06-14-00.00.00
+          format: date-time
+          example: 2020-06-14T00:00:00Z
         endDate:
           type: string
-          example: 2020-06-14-00.00.00
+          format: date-time
+          example: 2020-06-14T00:00:00Z
     error:
       type: object
       properties:
