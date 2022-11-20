@@ -2,6 +2,8 @@ package com.prices.application.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -44,7 +46,7 @@ class PriceServiceImplTest {
 		Optional<PriceDTO> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
 
 		assertTrue(resultPrice.isEmpty());
-		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(anyLong(), anyLong(), any(ZonedDateTime.class));
 	}
 
 	@Test
@@ -62,7 +64,7 @@ class PriceServiceImplTest {
 
 		assert (resultPrice.isPresent());
 		assertEquals(expectedResult, resultPrice.get());
-		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(anyLong(), anyLong(), any(ZonedDateTime.class));
 	}
 	
 	@Test
@@ -81,7 +83,7 @@ class PriceServiceImplTest {
 
 		assertTrue(resultPrice.isPresent());
 		assertEquals(expectedResult, resultPrice.get());
-		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(anyLong(), anyLong(), any(ZonedDateTime.class));
 	}
 
 	private static PriceDTO createPrice(Long id) {
