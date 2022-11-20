@@ -17,5 +17,6 @@
 		<module>prices-domain</module>
 		<module>prices-repository</module>
 		<module>prices-api-rest</module>
+		<module>prices-services</module>
 	</modules>
 </project>
