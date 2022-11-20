@@ -10,7 +10,7 @@ import org.springframework.util.CollectionUtils;
 
 import com.prices.adapters.service.PricesService;
 import com.prices.application.PriceDBRepository;
-import com.prices.model.Price;
+import com.prices.model.PriceDTO;
 
 @Service
 public class PriceServiceImpl implements PricesService{
@@ -19,8 +19,8 @@ public class PriceServiceImpl implements PricesService{
 	PriceDBRepository priceRepository;
 
 	@Override
-	public Optional<Price> getApplicablePrice(Long productId, Long brandId, ZonedDateTime startDate) {
-		Optional<List<Price>> pricesList = this.priceRepository.findByProductIdAndBrandIdAndStartDate(productId, brandId, startDate);
+	public Optional<PriceDTO> getApplicablePrice(Long productId, Long brandId, ZonedDateTime startDate) {
+		Optional<List<PriceDTO>> pricesList = this.priceRepository.findByProductIdAndBrandIdAndStartDate(productId, brandId, startDate);
 		if(pricesList.isEmpty() || CollectionUtils.isEmpty(pricesList.get())) {
 			return Optional.empty();
 		}

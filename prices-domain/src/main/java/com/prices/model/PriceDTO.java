@@ -7,7 +7,7 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Price {
+public class PriceDTO {
 	
 	private Long id;
 	private Long brandId;

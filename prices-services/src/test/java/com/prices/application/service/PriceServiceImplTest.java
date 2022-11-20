@@ -1,8 +1,10 @@
 package com.prices.application.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.ArgumentMatchers.eq;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import java.time.ZonedDateTime;
 import java.util.Arrays;
@@ -17,7 +19,7 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.prices.application.PriceDBRepository;
-import com.prices.model.Price;
+import com.prices.model.PriceDTO;
 
 @ExtendWith(MockitoExtension.class)
 class PriceServiceImplTest {
@@ -39,48 +41,51 @@ class PriceServiceImplTest {
 				priceRepository.findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME)))
 				.thenReturn(Optional.empty());
 
-		Optional<Price> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
+		Optional<PriceDTO> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
 
-		assertThat(resultPrice.isEmpty());
+		assertTrue(resultPrice.isEmpty());
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
 	}
 
 	@Test
 	void givenProductIdAndBrandIdAndDate_whenSingleResultFromRepository_thenReturnOptionalWithTheResult() {
 
-		Price expectedResult = createPrice(1L);
+		PriceDTO expectedResult = createPrice(1L);
 
-		List<Price> repositoryResultMock = Arrays.asList(expectedResult);
+		List<PriceDTO> repositoryResultMock = Arrays.asList(expectedResult);
 
 		Mockito.when(
 				priceRepository.findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME)))
 				.thenReturn(Optional.of(repositoryResultMock));
 
-		Optional<Price> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
+		Optional<PriceDTO> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
 
 		assert (resultPrice.isPresent());
 		assertEquals(expectedResult, resultPrice.get());
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
 	}
 	
 	@Test
 	void givenProductIdAndBrandIdAndDate_whenMultipleResultsFromRepository_thenReturnOptionalWithFirstResult() {
 
-		Price expectedResult = createPrice(1L);
-		Price anotherResult = createPrice(2L);
+		PriceDTO expectedResult = createPrice(1L);
+		PriceDTO anotherResult = createPrice(2L);
 
-		List<Price> repositoryResultMock = Arrays.asList(expectedResult, anotherResult);
+		List<PriceDTO> repositoryResultMock = Arrays.asList(expectedResult, anotherResult);
 
 		Mockito.when(
 				priceRepository.findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME)))
 				.thenReturn(Optional.of(repositoryResultMock));
 
-		Optional<Price> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
+		Optional<PriceDTO> resultPrice = this.priceServiceImpl.getApplicablePrice(PRODUCT_ID, BRAND_ID, START_TIME);
 
-		assert (resultPrice.isPresent());
+		assertTrue(resultPrice.isPresent());
 		assertEquals(expectedResult, resultPrice.get());
+		verify(this.priceRepository, times(1)).findByProductIdAndBrandIdAndStartDate(eq(PRODUCT_ID), eq(BRAND_ID), eq(START_TIME));
 	}
 
-	private static Price createPrice(Long id) {
-		return new Price(id, BRAND_ID, START_TIME, START_TIME, PRODUCT_ID, 1L, id, 125D, "EUR");
+	private static PriceDTO createPrice(Long id) {
+		return new PriceDTO(id, BRAND_ID, START_TIME, START_TIME, PRODUCT_ID, 1L, id, 125D, "EUR");
 	}
 
 }
