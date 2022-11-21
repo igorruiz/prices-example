@@ -7,8 +7,9 @@ Example about prices for products using:
 * Clean Code and Good Programming Principles.
 
 # Technologies used
-* Open Api 3.0.
+* Open Api 3.0
 * Spring Boot 2.7.5
+* Mapstruct 1.5.0
 * Lombok.
 
 # Possible improvements
