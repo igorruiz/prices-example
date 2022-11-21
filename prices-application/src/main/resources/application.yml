@@ -1,0 +1,29 @@
+spring:
+  h2:
+    console.enabled: true
+  jpa:
+    database: H2
+    generate-ddl: false
+    properties:
+      hibernate:
+       default-schema: PRICES
+       show-sql: true
+       dialect: org.hibernate.dialect.H2Dialect
+  datasource:
+    name: test
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false
+    username: testuser
+    password: testpassword
+  flyway:
+    locations:
+    - classpath:db/migration
+    user: testuser
+    schemas:
+    - PRICES
+    password: testpassword
+    url: jdbc:h2:mem:test;DATABASE_TO_UPPER=false
+
+  
+    
+   

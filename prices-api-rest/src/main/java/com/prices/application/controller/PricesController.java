@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 
 import com.igor.openapi.model.Price;
 import com.igor.openapi.prices.PricesApi;
@@ -18,6 +19,7 @@ import com.prices.adapters.service.PricesService;
 import com.prices.application.mapper.PriceMapper;
 import com.prices.model.PriceDTO;
 
+@Controller
 public class PricesController implements PricesApi {
 
 	@Autowired

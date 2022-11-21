@@ -4,10 +4,8 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import com.prices.model.PriceDTO;
-
-public interface PricesRepository {
+public interface PricesRepository<T> {
 	
-	Optional<List<PriceDTO>> findByProductIdAndBrandIdAndStartDate(Long productId, Long brandId, ZonedDateTime startDate);
+	Optional<List<T>> findByProductIdAndBrandIdAndStartDate(Long productId, Long brandId, ZonedDateTime startDate);
 	
 }
