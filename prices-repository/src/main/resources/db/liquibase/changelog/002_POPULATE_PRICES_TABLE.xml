@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet author="igruca" id="002">
+        <insert tableName="PRICES">
+           <column name="ID" valueNumeric="1"/>
+           <column name="BRAND_ID" valueNumeric="1"/>
+           <column name="START_DATE" value="2020-06-14 00:00:00Z"/>
+           <column name="END_DATE" value="2020-12-31 23:59:59Z"/>
+           <column name="PRICE_LIST" valueNumeric="1"/>
+           <column name="PRODUCT_ID" valueNumeric="35455"/>
+           <column name="PRIORITY" valueNumeric="0"/>
+           <column name="PRICE" valueNumeric="35.50"/>
+           <column name="CURRENCY" value="EUR"/>
+        </insert>
+        <insert tableName="PRICES">
+           <column name="ID" valueNumeric="2"/>
+           <column name="BRAND_ID" valueNumeric="1"/>
+           <column name="START_DATE" value="2020-06-14 15:00:00Z"/>
+           <column name="END_DATE" value="2020-06-14 18:30:00Z"/>
+           <column name="PRICE_LIST" valueNumeric="2"/>
+           <column name="PRODUCT_ID" valueNumeric="35455"/>
+           <column name="PRIORITY" valueNumeric="1"/>
+           <column name="PRICE" valueNumeric="25.45"/>
+           <column name="CURRENCY" value="EUR"/>
+        </insert>
+        <insert tableName="PRICES">
+           <column name="ID" valueNumeric="3"/>
+           <column name="BRAND_ID" valueNumeric="1"/>
+           <column name="START_DATE" value="2020-06-15 00:00:00Z"/>
+           <column name="END_DATE" value="2020-06-15 11:00:00Z"/>
+           <column name="PRICE_LIST" valueNumeric="3"/>
+           <column name="PRODUCT_ID" valueNumeric="35455"/>
+           <column name="PRIORITY" valueNumeric="1"/>
+           <column name="PRICE" valueNumeric="30.50"/>
+           <column name="CURRENCY" value="EUR"/>
+        </insert>
+        <insert tableName="PRICES">
+           <column name="ID" valueNumeric="4"/>
+           <column name="BRAND_ID" valueNumeric="1"/>
+           <column name="START_DATE" value="2020-06-15 16:00:00Z"/>
+           <column name="END_DATE" value="2020-12-31 23:59:59Z"/>
+           <column name="PRICE_LIST" valueNumeric="4"/>
+           <column name="PRODUCT_ID" valueNumeric="35455"/>
+           <column name="PRIORITY" valueNumeric="1"/>
+           <column name="PRICE" valueNumeric="38.95"/>
+           <column name="CURRENCY" value="EUR"/>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

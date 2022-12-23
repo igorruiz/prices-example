@@ -11,6 +11,7 @@ Example about prices for products using:
 * Spring Boot 2.7.5
 * Mapstruct 1.5.0
 * Lombok.
+* Liquibase (and support for flyway).
 
 # Possible improvements
 * Reactive Approach using Spring Webflux.
